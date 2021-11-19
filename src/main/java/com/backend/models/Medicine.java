@@ -33,11 +33,15 @@ public class Medicine {
 	
 	@NotBlank
 	private String unitOfMeasure;
+	
 	@NotNull
 	private float price;
+	
 	@NotNull
 	private Long dosage;
+	
 	private boolean prescription;
+	
 	@Column(updatable=false)
 	private Date createdAt;
 	private Date updatedAt;

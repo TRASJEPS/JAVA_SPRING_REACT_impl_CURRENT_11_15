@@ -16,8 +16,6 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -63,19 +61,6 @@ public class User {
 	// for fancy password goodness.
 	//
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-	
-	@Column(nullable=true)  
-	@Max(value=199, message="Please enter an age less than 199!")
-	@Min(value=17, message="Please enter an age over 17.")
-	private Integer age;
-	
-	
-	
-	/*leaving with out validations should be created 
-	when user is called into existence the first time
-	after the number should be retrievable
-	*/
-	private Integer mrn;//Medical record number
 	
 	
 	@Column(updatable=false)  // ENABLE WITH JAVA.UTIL.date
@@ -156,22 +141,6 @@ public class User {
 		this.confirmPassword = confirmPassword;
 	}
 
-	public Integer getAge() {
-		return age;
-	}
-
-	public void setAge(Integer age) {
-		this.age = age;
-	}
-	
-
-	public Integer getMrn() {
-		return mrn;
-	}
-	public void setMrn(Integer mrn) {
-		this.mrn = mrn;
-	}
-	
 	public Date getCreatedAt() {
 		return createdAt;
 	}

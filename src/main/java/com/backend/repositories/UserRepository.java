@@ -10,7 +10,6 @@ import com.backend.models.User;
 
 public interface UserRepository extends JpaRepository<User, Long>
 {
-	
 	// PASTED FROM CRUD.pharmatrack
 	List<User> findAll();
 	boolean existsByEmail(String email);

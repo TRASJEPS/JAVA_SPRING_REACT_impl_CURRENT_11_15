@@ -8,7 +8,8 @@ import com.backend.models.User;
 // SIMPLE SMALL
 public interface UserServices 
 {
-	User saveUser(User user);
+	User registerUser(User user);
+	boolean authenticateUser(String email, String password);
 	List<User> getAllUsers();
 	User getUserById(long id);
 	User updateUser(User user, long id);
