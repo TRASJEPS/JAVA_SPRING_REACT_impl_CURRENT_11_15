@@ -29,11 +29,11 @@ public class Patient {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
+	
 	@Size(min=2, message="Must be greater than 3 letters")
-	private String fName;
-	@NotBlank
-	private String lName;
+	private String firstName;
+	
+	private String lastName;
 	@Email
 	private String email;
 	@NotNull
@@ -84,11 +84,11 @@ public class Patient {
 		this.id = id;
 	}
 	
-	public String getlName() {
-		return lName;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setlName(String lName) {
-		this.lName = lName;
+	public void setLastName(String lName) {
+		this.lastName = lName;
 	}
 	public String getEmail() {
 		return email;
@@ -132,11 +132,11 @@ public class Patient {
 	public void setDoctor(User doctor) {
 		this.doctor = doctor;
 	}
-	public String getfName() {
-		return fName;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setfName(String fName) {
-		this.fName = fName;
+	public void setFirstName(String fName) {
+		this.firstName = fName;
 	}
 	
 	

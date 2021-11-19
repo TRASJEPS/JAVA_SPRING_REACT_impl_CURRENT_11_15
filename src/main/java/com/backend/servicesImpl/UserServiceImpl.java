@@ -2,6 +2,7 @@ package com.backend.servicesImpl;
 
 import java.util.List;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import com.backend.models.User;
@@ -19,11 +20,22 @@ private UserRepository uRepo;
 		super();
 		this.uRepo = uRepo;
 	}
-
-
+	
 	@Override
-	public User saveUser(User user) {
-		return uRepo.save(user);
+	public User registerUser(User user) {
+		String hash = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+		user.setPassword(hash);
+		return this.uRepo.save(user);
+	}
+	
+	@Override
+	public boolean authenticateUser(String email, String password) {
+		User user = this.uRepo.findByEmail(email);
+		
+		if(user==null) {
+			return false;
+		}
+		return BCrypt.checkpw(password, user.getPassword());
 	}
 
 
@@ -32,12 +44,10 @@ private UserRepository uRepo;
 		return uRepo.findAll();
 	}
 
-
 	@Override
 	public User getUserById(long id) {
 		return uRepo.getById(id);
 	}
-
 
 	@Override
 	public User updateUser(User user, long id) {
@@ -48,7 +58,6 @@ private UserRepository uRepo;
 		existingUser.setPassword(user.getPassword());
 		existingUser.setConfirmPassword(user.getConfirmPassword());
 		return existingUser;
-		
 	}
 
 	@Override

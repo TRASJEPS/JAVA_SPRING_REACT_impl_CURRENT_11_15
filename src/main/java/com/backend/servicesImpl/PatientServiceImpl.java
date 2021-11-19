@@ -41,8 +41,8 @@ public class PatientServiceImpl implements PatientServices {
 	@Override
 	public Patient updatePatient(Patient patient, long id) {
 		Patient existingPatient = pRepo.getPatientById(id);
-		existingPatient.setfName(patient.getfName());
-		existingPatient.setlName(patient.getlName());
+		existingPatient.setFirstName(patient.getFirstName());
+		existingPatient.setLastName(patient.getLastName());
 		existingPatient.setEmail(patient.getEmail());
 		existingPatient.setAge(patient.getAge());
 		existingPatient.setMedicalNumber(patient.getMedicalNumber());
